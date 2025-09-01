@@ -32,4 +32,27 @@ export class CourseCardComponent {
     this.courseSelected.emit(this.course);
   }
 
+  cardClasses(){
+    if(this.course.category == 'BEGINNER'){
+      return 'beginner';
+    } else if(this.course.category == 'INTERMEDIATE'){
+      return 'intermediate'
+    } else {
+      return 'advanced'
+    }
+  }
+
+  cardTitleStyle(){
+    return {
+      'text-decoration': 'underline'
+    };
+  }
+
+  cardTextStyle(){
+    return {
+      'text-decoration': 'underline',
+      'text-decoration-style': 'dotted'
+    };
+  }
+
 }
