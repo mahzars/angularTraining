@@ -12,10 +12,6 @@ export class AppComponent {
     courses = COURSES;
 
     onCourseSelected(course:Course){
-        console.log("App component - click event bubbled...", course);
-    }
-
-    trackCourse(index:number, course:Course){
-        return index;
+        console.log("App component", course);
     }
 }
