@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Course } from './../model/course';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'course-card',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
@@ -25,6 +26,29 @@ export class CourseCardComponent {
   onCourseViewed(){
     console.log("card component - button clicked....")
     this.courseSelected.emit(this.course);
+  }
+
+  cardClasses(){
+    if(this.course.category == 'BEGINNER'){
+      return 'beginner';
+    } else if(this.course.category == 'INTERMEDIATE'){
+      return 'intermediate'
+    } else {
+      return 'advanced'
+    }
+  }
+
+  cardTitleStyle(){
+    return {
+      'text-decoration': 'underline'
+    };
+  }
+
+  cardTextStyle(){
+    return {
+      'text-decoration': 'underline',
+      'text-decoration-style': 'dotted'
+    };
   }
 
 }

@@ -1,3 +1,22 @@
-.course-card .intermediate {
-    background: black;
+.course-card.beginner{
+    background:  lightsalmon;
+}
+.course-card.intermediate{
+    background: lightblue;
+}
+.course-card.advanced{
+    background: lightslategray;
+}
+
+.beginner{
+    background: lightskyblue;
+}
+.intermediate{
+    background: lightskyblue;
+}
+.advanced{
+    background: lightskyblue;
+}
+.unknown{
+    background: lightskyblue;
 }
