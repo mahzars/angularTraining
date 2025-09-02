@@ -8,7 +8,7 @@
 
 <div class="courses">
     @for (course of courses; 
-    track trackCourse; 
+    track $index; 
     ) {
     <course-card  
         [course]="course" 
