@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {COURSES} from '../db-data';
 import { Course } from './model/course';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @Component({
     selector: 'app-root',
@@ -11,11 +12,13 @@ import { Course } from './model/course';
 export class AppComponent {
     courses = COURSES;
 
-    onCourseSelected(course:Course){
-        console.log("App component - click event bubbled...", course);
-    }
+    @ViewChild('cardRef1', {read: ElementRef})
+    card1: ElementRef;
 
-    trackCourse(index:number, course:Course){
-        return index;
+    @ViewChild('container')
+    conatinerDiv: ElementRef;
+
+    onCourseSelected(course:Course){
+        console.log("continerDiv",this.card1);
     }
 }
