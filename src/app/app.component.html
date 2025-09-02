@@ -1,28 +1,32 @@
 <div class="top-menu">
 
-    <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
-         alt="Angular Academy main logo with small hat">
+    <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
+        alt="Angular Academy main logo with small hat">
 
 </div>
 
+<div class="demo">
+    <div>Start Date: {{startDate | date: 'MMM/dd/yyyy'}}</div>
+    <div>Title: {{title | titlecase}}</div>
+    <div>Price: {{price | currency : 'MXN'}}</div>
+    <div>Percentage: {{rate | percent}}</div>
+</div>
+
+<div *ngFor="let pair of course | keyvalue">
+    {{pair.key + ': ' + pair.value}}
+</div>
+
 <div class="courses">
-    @for (course of courses; 
-    track trackCourse; 
+    @for (course of courses | slice:1:11;
+    track $index;
     ) {
-    <course-card  
-        [course]="course" 
-        [index]="$index+1"
-        [class.is-first]="$first"
-        [class.is-even]="$even"
-        [class.is-odd]="$odd"
-        [class.is-last]="$last"
-        (courseSelected) = "onCourseSelected($event)" ></course-card>
+    <course-card [course]="course" [index]="$index+1" [class.is-first]="$first" [class.is-even]="$even"
+        [class.is-odd]="$odd" [class.is-last]="$last" (courseSelected)="onCourseSelected($event)"></course-card>
     }
 
     @empty {
-        <h1>No courses found</h1>
+    <h1>No courses found</h1>
     }
-    
+
 
 </div>
