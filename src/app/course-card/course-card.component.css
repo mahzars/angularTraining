@@ -7,3 +7,15 @@
 .course-card.advanced{
     background: lightslategray;
 }
+.beginner{
+    background: lightskyblue;
+}
+.intermediate{
+    background: lightskyblue;
+}
+.advanced{
+    background: lightskyblue;
+}
+.unknown{
+    background: lightskyblue;
+}
