@@ -1,5 +1,19 @@
 @if(course){
 <div class="course-card">
+    @switch (course.category) {
+        @case ("BEGINNER") {
+            <div class="beginner"></div>
+        }
+        @case ("INTERMEDIATE") {
+            <div class="intermediate"></div>
+        }
+        @case ("ADVANCED") {
+            <div class="advanced"></div>
+        }
+        @default {
+            <div class="unknown"></div>
+        }
+    }
 
     <div class="course-title">
         {{index}} {{ course.description }}

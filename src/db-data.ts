@@ -1,7 +1,5 @@
 export const COURSES: any = [
-
     undefined,
-
     {
         id: 1,
         description: "Angular Core Deep Dive",
@@ -15,7 +13,7 @@ export const COURSES: any = [
         description: "RxJs In Practice Course",
         iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/rxjs-in-practice-course.png',
         longDescription: "Understand the RxJs Observable pattern, learn the RxJs Operators via practical examples",
-        category: 'BEGINNER',
+        category: 'UNKNOWN',
         lessonsCount: 10
     },
 
