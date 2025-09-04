@@ -7,11 +7,12 @@
 
 <div class="courses" #container>
 
-    <course-card #cardRef1
-    (courseSelected)="onCourseSelected($event)" [index]="1" [course]="courses[1]">
-    </course-card>
+    <button (click)="onCoursesEdited()">Edit Courses</button>
 
-    <course-card #cardRef2 (courseSelected)="onCourseSelected($event)" [index]="2" [course]="courses[2]">
+    <course-card *ngFor="let course of courses"
+        (courseSelected)="onCourseSelected($event)" 
+        [index]="$index" [course]="course">
+        
     </course-card>
 
 
