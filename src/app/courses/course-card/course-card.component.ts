@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Course } from './../model/course';
+import { Course } from '../../model/course';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
