@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Course } from '../model/course';
+import { AppConfig, CONFIG_TOKEN } from '../config';
 
 interface CoursesResponse {
     payload: Course[];
@@ -12,7 +13,10 @@ interface CoursesResponse {
     providedIn: 'root'
 })
 export class CoursesService {
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        @Inject(CONFIG_TOKEN) private config: AppConfig
+    ) {}
 
     loadCourses(): Observable<Course[]> {
         const params = new HttpParams()
@@ -20,11 +24,11 @@ export class CoursesService {
             .set('pageSize', '10');
 
         return this.http
-            .get<CoursesResponse>('/api/courses', { params })
+            .get<CoursesResponse>(`${this.config.apiUrl}/api/courses`, { params })
             .pipe(map(response => response.payload));
     }
 
     saveCourse(course: Course): Observable<Course> {
-        return this.http.put<Course>(`/api/courses/${course.id}`, course);
+        return this.http.put<Course>(`${this.config.apiUrl}/api/courses/${course.id}`, course);
     }
 }
