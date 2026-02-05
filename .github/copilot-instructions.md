@@ -15,7 +15,7 @@
 ## Local dev workflows
 - Run commands from the `angular-course/` folder (running `npm start` elsewhere fails).
 - `npm start` runs `ng serve` with `proxy.json` so `/api/*` calls proxy to the Express server.
-- `npm run server` starts the API via `ts-node` on port 9000.
+- `npm run server` starts the API via `ts-node` on port 9010 (unless `PORT` is set). The port is defined in `server.ts` (`process.env.PORT || 9010`).
 - `npm test`, `npm run lint`, `npm run e2e` are wired to Angular CLI defaults.
 
 ## Conventions to follow
