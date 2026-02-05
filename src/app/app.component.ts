@@ -1,25 +1,31 @@
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
-import { CourseCardComponent } from './course-card/course-card.component';
+import { CourseCardComponent } from './courses/course-card/course-card.component';
+import { CourseImageComponent } from './courses/course-image/course-image.component';
+import { CoursesService } from './courses/courses.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     standalone: true,
-    imports: [CommonModule, CourseCardComponent]
+    imports: [CommonModule, CourseCardComponent, CourseImageComponent]
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
-    courses = COURSES;
+    courses: Course[] = COURSES;
 
     @ViewChildren(CourseCardComponent, { read: ElementRef })
     cards: QueryList<CourseCardComponent>;
 
-    constructor() {
+    constructor(private coursesService: CoursesService) { }
 
+    ngOnInit() {
+        this.coursesService.loadCourses().subscribe({
+            next: courses => (this.courses = courses)
+        });
     }
 
     ngAfterViewInit() {
