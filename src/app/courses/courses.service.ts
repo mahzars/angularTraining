@@ -16,7 +16,7 @@ export class CoursesService {
     constructor(
         private http: HttpClient,
         @Inject(CONFIG_TOKEN) private config: AppConfig
-    ) {}
+    ) { }
 
     loadCourses(): Observable<Course[]> {
         const params = new HttpParams()
