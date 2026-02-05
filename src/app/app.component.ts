@@ -27,6 +27,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     courses: Course[] = COURSES;
     readonly beginnerCategory = 'BEGINNER';
+    showAllCourses = false;
 
     @ViewChildren(CourseCardComponent, { read: ElementRef })
     cards: QueryList<CourseCardComponent>;
@@ -48,6 +49,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     onCourseSelected(course: Course) {
         console.log("continerDiv", course);
+    }
+
+    toggleShowAllCourses() {
+        this.showAllCourses = !this.showAllCourses;
     }
 
     onCourseChanged(course: Course) {
