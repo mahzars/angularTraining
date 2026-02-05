@@ -1,22 +1,31 @@
-.course-card.beginner{
-    background:  lightsalmon;
+.course-card.beginner {
+    background: lightsalmon;
 }
-.course-card.intermediate{
+
+.course-card.intermediate {
     background: lightblue;
 }
-.course-card.advanced{
+
+.course-card.advanced {
     background: lightslategray;
 }
 
-.beginner{
+.course-card.highlighted {
+    box-shadow: 0 0 0 3px rgba(255, 166, 0, 0.6);
+}
+
+.beginner {
     background: lightskyblue;
 }
-.intermediate{
+
+.intermediate {
     background: lightskyblue;
 }
-.advanced{
+
+.advanced {
     background: lightskyblue;
 }
-.unknown{
+
+.unknown {
     background: lightskyblue;
 }

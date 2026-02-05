@@ -5,17 +5,28 @@ import { Course } from './model/course';
 import { CourseCardComponent } from './courses/course-card/course-card.component';
 import { CourseImageComponent } from './courses/course-image/course-image.component';
 import { CoursesService } from './courses/courses.service';
+import { HighlightedDirective } from './courses/directives/highlighted.directive';
+import { NgxUnlessDirective } from './courses/directives/ngx-unless.directive';
+import { FilterByCategoryPipe } from './courses/filter-by-category.pipe';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     standalone: true,
-    imports: [CommonModule, CourseCardComponent, CourseImageComponent]
+    imports: [
+        CommonModule,
+        CourseCardComponent,
+        CourseImageComponent,
+        HighlightedDirective,
+        NgxUnlessDirective,
+        FilterByCategoryPipe
+    ]
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
     courses: Course[] = COURSES;
+    readonly beginnerCategory = 'BEGINNER';
 
     @ViewChildren(CourseCardComponent, { read: ElementRef })
     cards: QueryList<CourseCardComponent>;
