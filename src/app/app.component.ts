@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
@@ -8,6 +8,8 @@ import { CoursesService } from './courses/courses.service';
 import { HighlightedDirective } from './courses/directives/highlighted.directive';
 import { NgxUnlessDirective } from './courses/directives/ngx-unless.directive';
 import { FilterByCategoryPipe } from './courses/filter-by-category.pipe';
+import { createCustomElement } from '@angular/elements';
+import { CourseTitleComponent } from './course-title/course-title.component';
 
 @Component({
     selector: 'app-root',
@@ -32,9 +34,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     @ViewChildren(CourseCardComponent, { read: ElementRef })
     cards: QueryList<CourseCardComponent>;
 
-    constructor(private coursesService: CoursesService) { }
+    constructor(
+        private coursesService: CoursesService,
+        private injector: Injector
+    ) { }
 
     ngOnInit() {
+        const courseTitleElement = createCustomElement(CourseTitleComponent, {
+            injector: this.injector
+        });
+
+        if (!customElements.get('course-title')) {
+            customElements.define('course-title', courseTitleElement);
+        }
+
         this.coursesService.loadCourses().subscribe({
             next: courses => (this.courses = courses)
         });
