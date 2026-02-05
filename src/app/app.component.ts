@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@
 import { CommonModule } from '@angular/common';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
-import { CourseCardComponent } from './course-card/course-card.component';
+import { CourseCardComponent } from './courses/course-card/course-card.component';
 
 @Component({
     selector: 'app-root',
