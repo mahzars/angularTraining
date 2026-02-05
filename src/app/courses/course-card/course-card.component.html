@@ -1,7 +1,8 @@
 @if(course){
 <div class="course-card" [ngClass]="cardClasses()">
-    <div class="course-title" [ngStyle]="cardTitleStyle()">
-        {{index || ''}} {{ course.description }}
+    <div [ngStyle]="cardTitleStyle()">
+        {{index || ''}}
+        <course-title [title]="course.description"></course-title>
     </div>
 
     @if (course.iconUrl) {

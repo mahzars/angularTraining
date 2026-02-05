@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Course } from '../../model/course';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { CourseTitleComponent } from '../../course-title/course-title.component';
 
 @Component({
   selector: 'course-card',
-  imports: [CommonModule],
+  imports: [CommonModule, CourseTitleComponent],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css',
   standalone: true
