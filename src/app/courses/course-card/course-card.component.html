@@ -12,7 +12,8 @@
     }
 
     <div class="course-description" [ngStyle]="cardTextStyle()">
-        {{course.longDescription}}
+        Edit Title:
+        <input #courseTitle [value]="course.description" (keyup)="onTitleChanged(courseTitle.value)">
     </div>
 
     <div class="course-category">
@@ -33,5 +34,6 @@
     </div>
 
     <button (click)="onCourseViewed()">View Course</button>
+    <button (click)="onSaveClicked(courseTitle.value)">Save Course</button>
 </div>
 }

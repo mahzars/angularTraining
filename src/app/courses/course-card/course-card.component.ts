@@ -20,6 +20,9 @@ export class CourseCardComponent {
   @Output()
   courseSelected = new EventEmitter<Course>();
 
+  @Output('courseChanged')
+  courseEmitter = new EventEmitter<Course>();
+
   constructor() { }
 
   ngOnInit() { }
@@ -27,6 +30,14 @@ export class CourseCardComponent {
   onCourseViewed() {
     console.log("card component - button clicked....");
     this.courseSelected.emit(this.course);
+  }
+
+  onTitleChanged(newTitle: string) {
+    this.course.description = newTitle;
+  }
+
+  onSaveClicked(description: string) {
+    this.courseEmitter.emit({ ...this.course, description });
   }
 
   cardClasses() {

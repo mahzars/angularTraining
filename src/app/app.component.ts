@@ -39,6 +39,17 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log("continerDiv", course);
     }
 
+    onCourseChanged(course: Course) {
+        this.coursesService.saveCourse(course).subscribe({
+            next: updated => {
+                const index = this.courses.findIndex(item => item.id === updated.id);
+                if (index !== -1) {
+                    this.courses[index] = updated;
+                }
+            }
+        });
+    }
+
     onCoursesEdited() {
         console.log("onCoursesEdited");
         this.courses.push(
