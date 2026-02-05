@@ -9,10 +9,9 @@
 
     <button (click)="onCoursesEdited()">Edit Courses</button>
 
-    <course-card *ngFor="let course of courses"
-        (courseSelected)="onCourseSelected($event)" 
-        [index]="$index" [course]="course">
-        
+    <course-card *ngFor="let course of courses" (courseSelected)="onCourseSelected($event)" [index]="$index"
+        [course]="course">
+        <course-image [src]="course.iconUrl"></course-image>
     </course-card>
 
 

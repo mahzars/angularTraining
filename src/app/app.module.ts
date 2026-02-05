@@ -13,7 +13,7 @@ import { CourseCardComponent } from './courses/course-card/course-card.component
     BrowserModule,
     BrowserAnimationsModule,
     CourseCardComponent
-],
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

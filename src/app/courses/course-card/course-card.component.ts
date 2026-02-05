@@ -6,45 +6,46 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   selector: 'course-card',
   imports: [CommonModule],
   templateUrl: './course-card.component.html',
-  styleUrl: './course-card.component.css'
+  styleUrl: './course-card.component.css',
+  standalone: true
 })
 export class CourseCardComponent {
 
-  @Input({required:true})
-  course:Course;
+  @Input({ required: true })
+  course: Course;
 
-  @Input({required:true})
-  index:number
+  @Input({ required: true })
+  index: number;
 
   @Output()
   courseSelected = new EventEmitter<Course>();
 
-  constructor(){ }
+  constructor() { }
 
-  ngOnInit(){ }
+  ngOnInit() { }
 
-  onCourseViewed(){
-    console.log("card component - button clicked....")
+  onCourseViewed() {
+    console.log("card component - button clicked....");
     this.courseSelected.emit(this.course);
   }
 
-  cardClasses(){
-    if(this.course.category == 'BEGINNER'){
+  cardClasses() {
+    if (this.course.category == 'BEGINNER') {
       return 'beginner';
-    } else if(this.course.category == 'INTERMEDIATE'){
-      return 'intermediate'
+    } else if (this.course.category == 'INTERMEDIATE') {
+      return 'intermediate';
     } else {
-      return 'advanced'
+      return 'advanced';
     }
   }
 
-  cardTitleStyle(){
+  cardTitleStyle() {
     return {
       'text-decoration': 'underline'
     };
   }
 
-  cardTextStyle(){
+  cardTextStyle() {
     return {
       'text-decoration': 'underline',
       'text-decoration-style': 'dotted'

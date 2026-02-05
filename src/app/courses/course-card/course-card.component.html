@@ -1,40 +1,37 @@
 @if(course){
 <div class="course-card" [ngClass]="cardClasses()">
-        <div class="course-title"
-            [ngStyle]="cardTitleStyle()">
-            {{index || ''}} {{ course.description }}
-        </div>
-        
-        @if (course.iconUrl) {
-            <img width="300" alt="Angular Logo"
-                src="{{ course.iconUrl }}">
-        }
-        @else {
-            <h2>No image Available!</h2>
-        }
+    <div class="course-title" [ngStyle]="cardTitleStyle()">
+        {{index || ''}} {{ course.description }}
+    </div>
 
-        <div class="course-description"
-            [ngStyle]="cardTextStyle()">
+    @if (course.iconUrl) {
+    <ng-content select="course-image"></ng-content>
+    }
+    @else {
+    <h2>No image Available!</h2>
+    }
+
+    <div class="course-description" [ngStyle]="cardTextStyle()">
         {{course.longDescription}}
-        </div>
+    </div>
 
-        <div class="course-category">
+    <div class="course-category">
         @switch (course.category) {
-            @case ("BEGINNER") {
-                <div class="beginner">beginner</div>
-            }
-            @case ("INTERMEDIATE") {
-                <div class="intermediate">intermediate</div>
-            }
-            @case ("ADVANCED") {
-                <div class="advanced">advanced</div>
-            }
-            @default {
-                <div class="unknown">unknown</div>
-            }
+        @case ("BEGINNER") {
+        <div class="beginner">beginner</div>
         }
-        </div>
+        @case ("INTERMEDIATE") {
+        <div class="intermediate">intermediate</div>
+        }
+        @case ("ADVANCED") {
+        <div class="advanced">advanced</div>
+        }
+        @default {
+        <div class="unknown">unknown</div>
+        }
+        }
+    </div>
 
-        <button (click)="onCourseViewed()">View Course</button>
+    <button (click)="onCourseViewed()">View Course</button>
 </div>
 }
