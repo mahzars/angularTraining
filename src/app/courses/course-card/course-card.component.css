@@ -1,0 +1,31 @@
+.course-card.beginner {
+    background: lightsalmon;
+}
+
+.course-card.intermediate {
+    background: lightblue;
+}
+
+.course-card.advanced {
+    background: lightslategray;
+}
+
+.course-card.highlighted {
+    box-shadow: 0 0 0 3px rgba(255, 166, 0, 0.6);
+}
+
+.beginner {
+    background: lightskyblue;
+}
+
+.intermediate {
+    background: lightskyblue;
+}
+
+.advanced {
+    background: lightskyblue;
+}
+
+.unknown {
+    background: lightskyblue;
+}

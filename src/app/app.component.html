@@ -8,11 +8,16 @@
 <div class="courses" #container>
 
     <button (click)="onCoursesEdited()">Edit Courses</button>
+    <button (click)="toggleShowAllCourses()">
+        {{ showAllCourses ? 'Show Beginner Only' : 'Show All' }}
+    </button>
 
-    <course-card *ngFor="let course of courses"
-        (courseSelected)="onCourseSelected($event)" 
-        [index]="$index" [course]="course">
-        
+    <div *ngxUnless="courses.length > 0">No courses available.</div>
+
+    <course-card *ngFor="let course of (showAllCourses ? courses : (courses | filterByCategory: beginnerCategory))"
+        (courseSelected)="onCourseSelected($event)" (courseChanged)="onCourseChanged($event)" [index]="$index"
+        [course]="course" [highlighted]="course.category === beginnerCategory">
+        <course-image [src]="course.iconUrl"></course-image>
     </course-card>
 
 
